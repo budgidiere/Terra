@@ -9,8 +9,8 @@ public class ConfigTest {
         ConfigLoader loader = new ConfigLoader();
         ExampleConfig example = new ExampleConfig();
         loader.load(this.getClass().getResourceAsStream("/test.yml"), example);
-        System.out.println(example.value);
-        System.out.println(example.val1);
-        System.out.println(example.a);
+        System.out.println(example.getValue());
+        System.out.println(example.getVal1());
+        System.out.println(example.getA());
     }
 }

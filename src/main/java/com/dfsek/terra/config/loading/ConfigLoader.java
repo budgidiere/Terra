@@ -5,11 +5,14 @@ import com.dfsek.terra.config.Configuration;
 import com.dfsek.terra.config.annotations.Abstractable;
 import com.dfsek.terra.config.annotations.Default;
 import com.dfsek.terra.config.annotations.Value;
+import com.dfsek.terra.config.loading.loaders.DoubleLoader;
+import com.dfsek.terra.config.loading.loaders.IntLoader;
 import com.dfsek.terra.config.loading.loaders.StringLoader;
 
 import java.io.InputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
@@ -19,6 +22,10 @@ public class ConfigLoader {
 
     {
         registerLoader(String.class, new StringLoader());
+        registerLoader(int.class, new IntLoader());
+        registerLoader(Integer.class, new IntLoader());
+        registerLoader(double.class, new DoubleLoader());
+        registerLoader(Double.class, new DoubleLoader());
     }
 
     public ConfigLoader registerLoader(Type t, ClassLoader<?> loader) {
@@ -28,7 +35,10 @@ public class ConfigLoader {
 
     public void load(InputStream i, ConfigTemplate config) throws IllegalAccessException {
         Configuration configuration = new Configuration(i);
-        for(Field field : config.getClass().getFields()) {
+        for(Field field : config.getClass().getDeclaredFields()) {
+            int m = field.getModifiers();
+            if(Modifier.isFinal(m) || Modifier.isStatic(m)) continue; // Don't mess with static/final fields.
+            if(!field.isAccessible()) field.setAccessible(true); // Make field accessible if it isn't.
             boolean abstractable = false;
             boolean defaultable = false;
             Value value = null;
