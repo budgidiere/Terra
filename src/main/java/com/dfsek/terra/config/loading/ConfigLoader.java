@@ -17,6 +17,9 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class to load a config using reflection magic.
+ */
 public class ConfigLoader {
     private final Map<Type, ClassLoader<?>> loaders = new HashMap<>();
 
@@ -28,11 +31,25 @@ public class ConfigLoader {
         registerLoader(Double.class, new DoubleLoader());
     }
 
+    /**
+     * Register a custom class loader for a type
+     *
+     * @param t      Type
+     * @param loader Loader to load type with
+     * @return This config loader
+     */
     public ConfigLoader registerLoader(Type t, ClassLoader<?> loader) {
         loaders.put(t, loader);
         return this;
     }
 
+    /**
+     * Load a config from an InputStream and put it on a ConfigTemplate object.
+     *
+     * @param i      InputStream to load from
+     * @param config ConfigTemplate object to put the config on
+     * @throws IllegalAccessException If wacky reflection stuff occurs TODO: make dedicated exception
+     */
     public void load(InputStream i, ConfigTemplate config) throws IllegalAccessException {
         Configuration configuration = new Configuration(i);
         for(Field field : config.getClass().getDeclaredFields()) {
