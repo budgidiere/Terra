@@ -12,5 +12,6 @@ public class ConfigTest {
         System.out.println(example.getValue());
         System.out.println(example.getVal1());
         System.out.println(example.getA());
+        System.out.println(example.getNumber());
     }
 }

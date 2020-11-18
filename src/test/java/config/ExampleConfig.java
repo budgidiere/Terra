@@ -13,6 +13,9 @@ public class ExampleConfig implements ConfigTemplate {
     @Value(type = String.class, path = "a.b.c.d.e.f")
     private String a;
 
+    @Value(type = int.class, path = "number")
+    private int number;
+
     public String getValue() {
         return value;
     }
@@ -23,5 +26,9 @@ public class ExampleConfig implements ConfigTemplate {
 
     public String getVal1() {
         return val1;
+    }
+
+    public int getNumber() {
+        return number;
     }
 }

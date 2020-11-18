@@ -76,9 +76,6 @@ public class ConfigLoader {
                     else o = value.type().cast(configuration.get(value.path()));
 
                     field.set(config, o);
-
-                    if(!value.type().isInstance(o))
-                        throw new IllegalArgumentException(); // TODO: Replace with dedicated exception.
                 } else if(!defaultable) throw new IllegalArgumentException();
             }
         }
