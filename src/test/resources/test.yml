@@ -1,6 +1,9 @@
 value1: "test!"
 value2: "fdsfsdf"
 number: 3
+object:
+  string: "hello"
+  number: 3
 a:
   b:
     c:

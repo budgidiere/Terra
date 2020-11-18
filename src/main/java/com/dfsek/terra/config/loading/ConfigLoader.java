@@ -68,12 +68,12 @@ public class ConfigLoader {
             }
             if(value != null) {
                 System.out.println("Loading value...");
-                Type type = value.type();
+                Type type = field.getType();
                 Object o;
                 if(configuration.contains(value.path())) {
                     if(loaders.containsKey(type))
                         o = loaders.get(type).load(configuration.get(value.path()));
-                    else o = value.type().cast(configuration.get(value.path()));
+                    else o = field.getType().cast(configuration.get(value.path()));
 
                     field.set(config, o);
                 } else if(!defaultable) throw new IllegalArgumentException();
