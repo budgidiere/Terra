@@ -11,9 +11,9 @@ import com.dfsek.terra.api.world.carving.Worm;
 import com.dfsek.terra.api.world.generation.GenerationPhase;
 import com.dfsek.terra.biome.UserDefinedBiome;
 import com.dfsek.terra.biome.grid.master.TerraBiomeGrid;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -27,11 +27,11 @@ public class CarverCache {
     public CarverCache(World w, TerraPlugin main) {
         this.w = w;
         this.main = main;
-        carvers = Collections.synchronizedMap(new LinkedHashMap<Long, List<Worm.WormPoint>>() {
-            @Override
-            protected boolean removeEldestEntry(Map.Entry eldest) {
-                return this.size() > main.getTerraConfig().getCarverCacheSize();
-            }
+        carvers = Collections.synchronizedMap(new Object2ObjectLinkedOpenHashMap<Long, List<Worm.WormPoint>>() {
+//            @Override
+//            protected boolean removeEldestEntry(Map.Entry eldest) {
+//                return this.size() > main.getTerraConfig().getCarverCacheSize();
+//            }
         });
     }
 

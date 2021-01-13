@@ -3,33 +3,33 @@ package com.dfsek.terra.api.structures.parser;
 import com.dfsek.terra.api.structures.parser.exceptions.ParseException;
 import com.dfsek.terra.api.structures.parser.lang.Returnable;
 import com.dfsek.terra.api.structures.tokenizer.Token;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ParserUtil {
 
-    private static final Map<Token.Type, Map<Token.Type, Boolean>> PRECEDENCE = new HashMap<>(); // If second has precedence, true.
+    private static final Map<Token.Type, Map<Token.Type, Boolean>> PRECEDENCE = new Object2ObjectOpenHashMap<>(); // If second has precedence, true.
     private static final List<Token.Type> ARITHMETIC = Arrays.asList(Token.Type.ADDITION_OPERATOR, Token.Type.SUBTRACTION_OPERATOR, Token.Type.MULTIPLICATION_OPERATOR, Token.Type.DIVISION_OPERATOR, Token.Type.MODULO_OPERATOR);
     private static final List<Token.Type> COMPARISON = Arrays.asList(Token.Type.EQUALS_OPERATOR, Token.Type.NOT_EQUALS_OPERATOR, Token.Type.LESS_THAN_OPERATOR, Token.Type.LESS_THAN_OR_EQUALS_OPERATOR, Token.Type.GREATER_THAN_OPERATOR, Token.Type.GREATER_THAN_OR_EQUALS_OPERATOR);
 
     static { // Setup precedence
-        Map<Token.Type, Boolean> add = new HashMap<>(); // Addition/subtraction before Multiplication/division.
+        Map<Token.Type, Boolean> add = new Object2ObjectOpenHashMap<>(); // Addition/subtraction before Multiplication/division.
         add.put(Token.Type.MULTIPLICATION_OPERATOR, true);
         add.put(Token.Type.DIVISION_OPERATOR, true);
 
         PRECEDENCE.put(Token.Type.ADDITION_OPERATOR, add);
         PRECEDENCE.put(Token.Type.SUBTRACTION_OPERATOR, add);
 
-        Map<Token.Type, Boolean> numericBoolean = new HashMap<>();
+        Map<Token.Type, Boolean> numericBoolean = new Object2ObjectOpenHashMap<>();
 
         ARITHMETIC.forEach(op -> numericBoolean.put(op, true)); // Numbers before comparison
         COMPARISON.forEach(op -> PRECEDENCE.put(op, numericBoolean));
 
 
-        Map<Token.Type, Boolean> booleanOps = new HashMap<>();
+        Map<Token.Type, Boolean> booleanOps = new Object2ObjectOpenHashMap<>();
         ARITHMETIC.forEach(op -> booleanOps.put(op, true)); // Everything before boolean
         COMPARISON.forEach(op -> booleanOps.put(op, true));
 

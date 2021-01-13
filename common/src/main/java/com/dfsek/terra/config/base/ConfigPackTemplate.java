@@ -8,9 +8,9 @@ import com.dfsek.terra.api.math.MathUtil;
 import com.dfsek.terra.biome.grid.master.TerraBiomeGrid;
 import com.dfsek.terra.generation.config.NoiseBuilder;
 import com.dfsek.terra.image.ImageLoader;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jafama.FastMath;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +24,7 @@ public class ConfigPackTemplate implements ValidatedConfigTemplate {
 
     @Value("variables")
     @Default
-    private Map<String, Double> variables = new HashMap<>();
+    private Map<String, Double> variables = new Object2ObjectOpenHashMap<>();
 
     @Value("grids")
     private List<String> grids;
@@ -51,7 +51,7 @@ public class ConfigPackTemplate implements ValidatedConfigTemplate {
 
     @Value("structures.locatable")
     @Default
-    private Map<String, String> locatable = new HashMap<>();
+    private Map<String, String> locatable = new Object2ObjectOpenHashMap<>();
 
     @Value("blend.terrain.elevation")
     @Default

@@ -1,6 +1,7 @@
 package com.dfsek.terra.api.transform;
 
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+
 import java.util.Map;
 
 public class MapTransform<F, T> implements Transform<F, T> {
@@ -11,7 +12,7 @@ public class MapTransform<F, T> implements Transform<F, T> {
     }
 
     public MapTransform() {
-        this.map = new HashMap<>();
+        this.map = new Object2ObjectOpenHashMap<>();
     }
 
     public MapTransform<F, T> add(F from, T to) {

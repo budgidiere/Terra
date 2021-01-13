@@ -12,6 +12,7 @@ import com.dfsek.terra.api.world.generation.GenerationPhase;
 import com.dfsek.terra.biome.UserDefinedBiome;
 import com.dfsek.terra.config.templates.BiomeTemplate;
 import com.dfsek.terra.config.templates.CarverTemplate;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jafama.FastMath;
 import parsii.eval.Expression;
 import parsii.eval.Parser;
@@ -19,7 +20,6 @@ import parsii.eval.Scope;
 import parsii.eval.Variable;
 import parsii.tokenizer.ParseException;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -39,7 +39,7 @@ public class UserDefinedCarver extends Carver {
     private final Variable lengthVar;
     private final Variable position;
     private final Variable seedVar;
-    private final Map<World, CarverCache> cacheMap = new HashMap<>();
+    private final Map<World, CarverCache> cacheMap = new Object2ObjectOpenHashMap<>();
     private double step = 2;
     private Range recalc = new Range(8, 10);
     private double recalcMagnitude = 3;

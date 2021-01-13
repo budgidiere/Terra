@@ -2,16 +2,16 @@ package com.dfsek.terra.config.files;
 
 import com.dfsek.tectonic.exception.ConfigException;
 import com.dfsek.terra.api.util.GlueList;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public abstract class Loader {
-    protected final Map<String, InputStream> streams = new HashMap<>();
+    protected final Map<String, InputStream> streams = new Object2ObjectOpenHashMap<>();
 
     /**
      * Do something with the InputStreams.

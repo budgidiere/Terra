@@ -25,6 +25,7 @@ import com.dfsek.terra.fabric.world.TerraBiomeSource;
 import com.dfsek.terra.fabric.world.features.PopulatorFeature;
 import com.dfsek.terra.fabric.world.generator.FabricChunkGeneratorWrapper;
 import com.dfsek.terra.registry.ConfigRegistry;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
@@ -56,14 +57,13 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TerraFabricPlugin implements TerraPlugin, ModInitializer {
 
-    private final Map<Long, TerraWorld> worldMap = new HashMap<>();
+    private final Map<Long, TerraWorld> worldMap = new Object2ObjectOpenHashMap<>();
     private static TerraFabricPlugin instance;
 
     public static TerraFabricPlugin getInstance() {

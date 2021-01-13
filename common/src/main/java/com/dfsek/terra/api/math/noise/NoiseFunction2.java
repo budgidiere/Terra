@@ -2,7 +2,7 @@ package com.dfsek.terra.api.math.noise;
 
 import com.dfsek.terra.api.math.noise.samplers.NoiseSampler;
 import com.dfsek.terra.generation.config.NoiseBuilder;
-import com.dfsek.terra.util.hash.HashMapDoubleDouble;
+import it.unimi.dsi.fastutil.doubles.Double2DoubleOpenHashMap;
 import parsii.eval.Expression;
 
 import java.util.List;
@@ -40,7 +40,7 @@ public class NoiseFunction2 implements NoiseFunction {
         return true;
     }
 
-    private static class Cache extends HashMapDoubleDouble {
+    private static class Cache extends Double2DoubleOpenHashMap {
         private static final long serialVersionUID = 8915092734723467010L;
         private static final int cacheSize = 384;
 

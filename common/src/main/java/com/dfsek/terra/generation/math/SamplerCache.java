@@ -4,11 +4,11 @@ import com.dfsek.terra.TerraWorld;
 import com.dfsek.terra.api.math.MathUtil;
 import com.dfsek.terra.api.platform.TerraPlugin;
 import com.dfsek.terra.api.platform.world.World;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jafama.FastMath;
 
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SamplerCache {
@@ -16,7 +16,7 @@ public class SamplerCache {
     private final TerraPlugin main;
 
     public SamplerCache(TerraPlugin main) {
-        containerMap = new HashMap<>();
+        containerMap = new Object2ObjectOpenHashMap<>();
         this.main = main;
     }
 
@@ -35,11 +35,11 @@ public class SamplerCache {
     private class Container {
         private final World world;
         private final TerraWorld terraWorld;
-        private final Map<Long, Sampler> cache = Collections.synchronizedMap(new LinkedHashMap<Long, Sampler>() {
-            @Override
-            protected boolean removeEldestEntry(Map.Entry<Long, Sampler> eldest) {
-                return this.size() > main.getTerraConfig().getSamplerCache();
-            }
+        private final Map<Long, Sampler> cache = Collections.synchronizedMap(new Object2ObjectLinkedOpenHashMap<Long, Sampler>() {
+//            @Override
+//            protected boolean removeEldestEntry(Map.Entry<Long, Sampler> eldest) {
+//                return this.size() > main.getTerraConfig().getSamplerCache();
+//            }
         });
 
         private Container(World world) {

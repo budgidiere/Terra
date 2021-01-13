@@ -3,6 +3,8 @@ package com.dfsek.terra.api.structures.parser.exceptions;
 import com.dfsek.terra.api.structures.tokenizer.Position;
 
 public class ParseException extends Exception {
+    private static final long serialVersionUID = 1243124323423435435L;
+
     private final Position position;
 
     public ParseException(String message, Position position) {

@@ -10,6 +10,7 @@ import com.dfsek.terra.api.platform.world.Tree;
 import com.dfsek.terra.api.platform.world.World;
 import com.dfsek.terra.api.platform.world.entity.Entity;
 import com.dfsek.terra.api.platform.world.entity.EntityType;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.jafama.FastMath;
 import net.querz.mca.MCAFile;
 import net.querz.mca.MCAUtil;
@@ -18,14 +19,13 @@ import net.querz.nbt.tag.CompoundTag;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 public class DirectWorld implements World {
     private final long seed;
     private final GenWrapper generator;
-    private final Map<Long, MCAFile> files = Collections.synchronizedMap(new HashMap<>());
+    private final Map<Long, MCAFile> files = Collections.synchronizedMap(new Object2ObjectOpenHashMap<>());
 
     public DirectWorld(long seed, GenWrapper generator) {
         this.seed = seed;

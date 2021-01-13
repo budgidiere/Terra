@@ -1,8 +1,9 @@
 package com.dfsek.terra.api.transform;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,9 @@ import java.util.Map;
  * @param <T> Data type to transform to.
  */
 public class Transformer<F, T> {
-    private final LinkedHashMap<Transform<F, T>, List<Validator<T>>> transformers;
+    private final Object2ObjectLinkedOpenHashMap<Transform<F, T>, List<Validator<T>>> transformers;
 
-    private Transformer(LinkedHashMap<Transform<F, T>, List<Validator<T>>> transformer) {
+    private Transformer(Object2ObjectLinkedOpenHashMap<Transform<F, T>, List<Validator<T>>> transformer) {
         this.transformers = transformer;
     }
 
@@ -50,7 +51,7 @@ public class Transformer<F, T> {
      * @param <F>
      */
     public static final class Builder<F, T> {
-        private final LinkedHashMap<Transform<F, T>, List<Validator<T>>> transforms = new LinkedHashMap<>();
+        private final Object2ObjectLinkedOpenHashMap<Transform<F, T>, List<Validator<T>>> transforms = new Object2ObjectLinkedOpenHashMap<>();
 
         @SafeVarargs
         public final Builder<F, T> addTransform(Transform<F, T> transform, Validator<T>... validators) {

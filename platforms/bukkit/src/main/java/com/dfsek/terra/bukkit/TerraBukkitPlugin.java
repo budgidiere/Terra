@@ -30,6 +30,7 @@ import com.dfsek.terra.config.lang.LangUtil;
 import com.dfsek.terra.debug.Debug;
 import com.dfsek.terra.generation.MasterChunkGenerator;
 import com.dfsek.terra.registry.ConfigRegistry;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.TreeType;
@@ -40,15 +41,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 
 public class TerraBukkitPlugin extends JavaPlugin implements TerraPlugin {
-    private final Map<String, MasterChunkGenerator> generatorMap = new HashMap<>();
-    private final Map<World, TerraWorld> worldMap = new HashMap<>();
-    private final Map<String, ConfigPack> worlds = new HashMap<>();
+    private final Map<String, MasterChunkGenerator> generatorMap = new Object2ObjectOpenHashMap<>();
+    private final Map<World, TerraWorld> worldMap = new Object2ObjectOpenHashMap<>();
+    private final Map<String, ConfigPack> worlds = new Object2ObjectOpenHashMap<>();
     private final ConfigRegistry registry = new ConfigRegistry();
     private final PluginConfig config = new PluginConfig();
     private final ItemHandle itemHandle = new BukkitItemHandle();
@@ -68,7 +68,7 @@ public class TerraBukkitPlugin extends JavaPlugin implements TerraPlugin {
 
 
     public void reload() {
-        Map<World, TerraWorld> newMap = new HashMap<>();
+        Map<World, TerraWorld> newMap = new Object2ObjectOpenHashMap<>();
         worldMap.forEach((world, tw) -> {
             ((MasterChunkGenerator) ((BukkitChunkGeneratorWrapper) world.getGenerator().getHandle()).getHandle()).getCache().clear();
             String packID = tw.getConfig().getTemplate().getID();

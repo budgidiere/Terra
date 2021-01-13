@@ -20,11 +20,11 @@ import com.dfsek.terra.population.items.TerraStructure;
 import com.dfsek.terra.population.items.flora.FloraLayer;
 import com.dfsek.terra.population.items.ores.OreHolder;
 import com.dfsek.terra.population.items.tree.TreeLayer;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import parsii.eval.Parser;
 import parsii.eval.Scope;
 import parsii.tokenizer.ParseException;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -71,7 +71,7 @@ public class BiomeTemplate extends AbstractableTemplate implements ValidatedConf
     @Value("carving")
     @Abstractable
     @Default
-    private Map<UserDefinedCarver, Integer> carvers = new HashMap<>();
+    private Map<UserDefinedCarver, Integer> carvers = new Object2ObjectOpenHashMap<>();
     @Value("noise-equation")
     @Abstractable
     private String noiseEquation;

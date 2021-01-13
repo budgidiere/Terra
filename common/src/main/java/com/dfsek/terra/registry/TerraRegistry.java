@@ -3,16 +3,16 @@ package com.dfsek.terra.registry;
 import com.dfsek.tectonic.exception.LoadException;
 import com.dfsek.tectonic.loading.ConfigLoader;
 import com.dfsek.tectonic.loading.TypeLoader;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 import java.lang.reflect.Type;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
 public abstract class TerraRegistry<T> implements TypeLoader<T> {
-    private final Map<String, T> objects = new HashMap<>();
+    private final Map<String, T> objects = new Object2ObjectOpenHashMap<>();
 
     @Override
     public T load(Type type, Object o, ConfigLoader configLoader) throws LoadException {

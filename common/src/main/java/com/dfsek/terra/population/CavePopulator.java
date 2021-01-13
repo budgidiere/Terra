@@ -15,17 +15,17 @@ import com.dfsek.terra.carving.UserDefinedCarver;
 import com.dfsek.terra.config.base.ConfigPack;
 import com.dfsek.terra.config.templates.CarverTemplate;
 import com.dfsek.terra.util.PopulationUtil;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
 public class CavePopulator implements TerraBlockPopulator {
     private final TerraPlugin main;
-    private static final Map<MaterialData, BlockData> shiftStorage = new HashMap<>(); // Persist BlockData created for shifts, to avoid re-calculating each time.
+    private static final Map<MaterialData, BlockData> shiftStorage = new Object2ObjectOpenHashMap<>(); // Persist BlockData created for shifts, to avoid re-calculating each time.
 
     public CavePopulator(TerraPlugin main) {
         this.main = main;
@@ -44,7 +44,7 @@ public class CavePopulator implements TerraBlockPopulator {
 
             for(UserDefinedCarver c : config.getCarvers()) {
                 CarverTemplate template = c.getConfig();
-                Map<Location, MaterialData> shiftCandidate = new HashMap<>();
+                Map<Location, MaterialData> shiftCandidate = new Object2ObjectOpenHashMap<>();
                 Set<Block> updateNeeded = new ObjectOpenHashSet<>();
                 c.carve(chunk.getX(), chunk.getZ(), world, (v, type) -> {
                     Block b = chunk.getBlock(v.getBlockX(), v.getBlockY(), v.getBlockZ());

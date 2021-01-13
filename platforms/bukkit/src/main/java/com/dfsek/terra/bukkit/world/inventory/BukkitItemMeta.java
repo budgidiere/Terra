@@ -5,9 +5,9 @@ import com.dfsek.terra.api.platform.inventory.item.ItemMeta;
 import com.dfsek.terra.bukkit.world.BukkitAdapter;
 import com.dfsek.terra.bukkit.world.inventory.meta.BukkitDamageable;
 import com.dfsek.terra.bukkit.world.inventory.meta.BukkitEnchantment;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.bukkit.inventory.meta.Damageable;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class BukkitItemMeta implements ItemMeta {
@@ -29,7 +29,7 @@ public class BukkitItemMeta implements ItemMeta {
 
     @Override
     public Map<Enchantment, Integer> getEnchantments() {
-        Map<Enchantment, Integer> map = new HashMap<>();
+        Map<Enchantment, Integer> map = new Object2ObjectOpenHashMap<>();
         delegate.getEnchants().forEach((enchantment, integer) -> map.put(BukkitAdapter.adapt(enchantment), integer));
         return map;
     }

@@ -45,16 +45,16 @@ import com.dfsek.terra.api.structures.tokenizer.Position;
 import com.dfsek.terra.api.structures.tokenizer.Token;
 import com.dfsek.terra.api.structures.tokenizer.Tokenizer;
 import com.dfsek.terra.api.util.GlueList;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
 public class Parser {
     private final String data;
-    private final Map<String, FunctionBuilder<? extends Function<?>>> functions = new HashMap<>();
+    private final Map<String, FunctionBuilder<? extends Function<?>>> functions = new Object2ObjectOpenHashMap<>();
 
     private String id;
 
@@ -88,7 +88,7 @@ public class Parser {
         this.id = idToken.getContent();
 
 
-        return parseBlock(tokens, new HashMap<>(), false);
+        return parseBlock(tokens, new Object2ObjectOpenHashMap<>(), false);
     }
 
 
@@ -163,7 +163,7 @@ public class Parser {
     }
 
     private ForKeyword parseForLoop(Tokenizer tokens, Map<String, Variable<?>> old, Position start) throws ParseException {
-        Map<String, Variable<?>> variableMap = new HashMap<>(old); // New scope
+        Map<String, Variable<?>> variableMap = new Object2ObjectOpenHashMap<>(old); // New scope
         Token f = tokens.get();
         ParserUtil.checkType(f, Token.Type.NUMBER_VARIABLE, Token.Type.STRING_VARIABLE, Token.Type.BOOLEAN_VARIABLE, Token.Type.IDENTIFIER);
         Item<?> initializer;
@@ -332,7 +332,7 @@ public class Parser {
     private Block parseBlock(Tokenizer tokens, Map<String, Variable<?>> superVars, boolean loop) throws ParseException {
         List<Item<?>> parsedItems = new GlueList<>();
 
-        Map<String, Variable<?>> parsedVariables = new HashMap<>(superVars); // New hashmap as to not mutate parent scope's declarations.
+        Map<String, Variable<?>> parsedVariables = new Object2ObjectOpenHashMap<>(superVars); // New Object2ObjectOpenHashMap as to not mutate parent scope's declarations.
 
         Token first = tokens.get();
 

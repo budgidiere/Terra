@@ -32,13 +32,13 @@ import com.dfsek.terra.debug.Debug;
 import com.dfsek.terra.generation.math.SamplerCache;
 import com.dfsek.terra.registry.LootRegistry;
 import com.dfsek.terra.registry.ScriptRegistry;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.jafama.FastMath;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 
@@ -88,11 +88,11 @@ public class StructureScript {
         this.id = parser.getID();
         tempID = id;
         this.main = main;
-        this.cache = Collections.synchronizedMap(new LinkedHashMap<Location, StructureBuffer>() {
-            @Override
-            protected boolean removeEldestEntry(Map.Entry<Location, StructureBuffer> eldest) {
-                return this.size() > main.getTerraConfig().getStructureCache();
-            }
+        this.cache = Collections.synchronizedMap(new Object2ObjectLinkedOpenHashMap<Location, StructureBuffer>() {
+//            @Override
+//            protected boolean removeEldestEntry(Map.Entry<Location, StructureBuffer> eldest) {
+//                return this.size() > main.getTerraConfig().getStructureCache();
+//            }
         });
     }
 

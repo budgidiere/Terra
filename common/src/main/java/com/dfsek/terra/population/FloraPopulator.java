@@ -12,9 +12,9 @@ import com.dfsek.terra.biome.UserDefinedBiome;
 import com.dfsek.terra.biome.grid.master.TerraBiomeGrid;
 import com.dfsek.terra.population.items.flora.FloraLayer;
 import com.dfsek.terra.util.PopulationUtil;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -36,7 +36,7 @@ public class FloraPopulator implements TerraBlockPopulator {
         try(ProfileFuture ignored = tw.getProfiler().measure("FloraTime")) {
             if(!tw.isSafe()) return;
             TerraBiomeGrid grid = tw.getGrid();
-            Map<Vector2, List<FloraLayer>> layers = new HashMap<>();
+            Map<Vector2, List<FloraLayer>> layers = new Object2ObjectOpenHashMap<>();
             for(int x = 0; x < 16; x++) {
                 for(int z = 0; z < 16; z++) {
                     UserDefinedBiome biome = (UserDefinedBiome) grid.getBiome((chunk.getX() << 4) + x, (chunk.getZ() << 4) + z, GenerationPhase.POPULATE);

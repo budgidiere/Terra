@@ -3,13 +3,13 @@ package com.dfsek.terra.config.builder;
 import com.dfsek.terra.biome.palette.PaletteHolder;
 import com.dfsek.terra.generation.config.NoiseBuilder;
 import com.dfsek.terra.generation.config.WorldGenerator;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import parsii.eval.Scope;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class GeneratorBuilder {
-    private final Map<Long, WorldGenerator> gens = new HashMap<>();
+    private final Map<Long, WorldGenerator> gens = new Object2ObjectOpenHashMap<>();
 
     private String noiseEquation;
 

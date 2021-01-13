@@ -63,7 +63,7 @@ public class PopulationManager implements TerraBlockPopulator {
     public synchronized void saveBlocks(World w) throws IOException {
         File f = new File(Gaea.getGaeaFolder(w), "chunks.bin");
         f.createNewFile();
-        SerializationUtil.toFile((ObjectOpenHashSet<ChunkCoordinate>) needsPop.clone(), f);
+        SerializationUtil.toFile(needsPop.clone(), f);
     }
 
     @SuppressWarnings("unchecked")

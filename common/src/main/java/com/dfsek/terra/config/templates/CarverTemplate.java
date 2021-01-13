@@ -7,8 +7,8 @@ import com.dfsek.terra.api.math.Range;
 import com.dfsek.terra.api.platform.block.MaterialData;
 import com.dfsek.terra.carving.CarverPalette;
 import com.dfsek.terra.util.MaterialSet;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings({"unused", "FieldMayBeFinal"})
@@ -104,7 +104,7 @@ public class CarverTemplate extends AbstractableTemplate {
     @Value("shift")
     @Abstractable
     @Default
-    private Map<MaterialData, MaterialSet> shift = new HashMap<>();
+    private Map<MaterialData, MaterialSet> shift = new Object2ObjectOpenHashMap<>();
 
     @Value("update")
     @Abstractable

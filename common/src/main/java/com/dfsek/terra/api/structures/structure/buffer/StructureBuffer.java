@@ -3,13 +3,13 @@ package com.dfsek.terra.api.structures.structure.buffer;
 import com.dfsek.terra.api.math.vector.Location;
 import com.dfsek.terra.api.platform.world.Chunk;
 import com.dfsek.terra.api.structures.structure.buffer.items.BufferedItem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
 import net.jafama.FastMath;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class StructureBuffer implements Buffer {
-    private final Map<Location, Cell> bufferedItemMap = new LinkedHashMap<>();
+    private final Map<Location, Cell> bufferedItemMap = new Object2ObjectLinkedOpenHashMap<>();
     private final Location origin;
     private boolean succeeded;
 

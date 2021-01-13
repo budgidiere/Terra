@@ -3,6 +3,7 @@ package com.dfsek.terra.api.structures.tokenizer.exceptions;
 import com.dfsek.terra.api.structures.tokenizer.Position;
 
 public class FormatException extends TokenizerException {
+    private static final long serialVersionUID = 954632654645431235L;
 
     public FormatException(String message, Position position) {
         super(message, position);

@@ -1,17 +1,18 @@
 package com.dfsek.terra.api.platform.block.state;
 
-import java.util.HashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+
 import java.util.Map;
 
 public class SerialState {
-    protected final Map<String, Property<?>> properties = new HashMap<>();
+    protected final Map<String, Property<?>> properties = new Object2ObjectOpenHashMap<>();
 
     public SerialState() {
     }
 
     public static Map<String, String> parse(String props) {
         String[] sep = props.split(",");
-        Map<String, String> map = new HashMap<>();
+        Map<String, String> map = new Object2ObjectOpenHashMap<>();
         for(String item : sep) {
             map.put(item.substring(0, item.indexOf('=')), item.substring(item.indexOf('=') + 1));
         }
