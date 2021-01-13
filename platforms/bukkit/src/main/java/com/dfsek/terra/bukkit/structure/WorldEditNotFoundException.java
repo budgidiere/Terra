@@ -1,6 +1,8 @@
 package com.dfsek.terra.bukkit.structure;
 
 public class WorldEditNotFoundException extends RuntimeException {
+    private static final long serialVersionUID = 1899999999;
+    
     public WorldEditNotFoundException() {
     }
 

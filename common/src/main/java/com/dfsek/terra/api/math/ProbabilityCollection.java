@@ -1,15 +1,15 @@
 package com.dfsek.terra.api.math;
 
 import com.dfsek.terra.api.math.noise.samplers.NoiseSampler;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.jafama.FastMath;
 
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 @SuppressWarnings("unchecked")
 public class ProbabilityCollection<E> {
-    private final Set<Object> cont = new HashSet<>();
+    private final Set<Object> cont = new ObjectOpenHashSet<>();
     private Object[] array = new Object[0];
     private int size;
 

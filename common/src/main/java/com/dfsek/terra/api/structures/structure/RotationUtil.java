@@ -12,6 +12,7 @@ import com.dfsek.terra.api.platform.block.data.RedstoneWire;
 import com.dfsek.terra.api.platform.block.data.Rotatable;
 import com.dfsek.terra.api.platform.block.data.Wall;
 import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.jafama.FastMath;
 
 import java.util.EnumMap;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class RotationUtil {
-    private static final Set<BlockFace> CARDINALS = Sets.newHashSet(BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST);
+    private static final Set<BlockFace> CARDINALS = new ObjectOpenHashSet<>(Sets.newHashSet(BlockFace.NORTH, BlockFace.SOUTH, BlockFace.EAST, BlockFace.WEST));
 
     /**
      * Rotate and mirror a coordinate pair.

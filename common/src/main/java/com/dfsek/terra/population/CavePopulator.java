@@ -15,10 +15,10 @@ import com.dfsek.terra.carving.UserDefinedCarver;
 import com.dfsek.terra.config.base.ConfigPack;
 import com.dfsek.terra.config.templates.CarverTemplate;
 import com.dfsek.terra.util.PopulationUtil;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -45,7 +45,7 @@ public class CavePopulator implements TerraBlockPopulator {
             for(UserDefinedCarver c : config.getCarvers()) {
                 CarverTemplate template = c.getConfig();
                 Map<Location, MaterialData> shiftCandidate = new HashMap<>();
-                Set<Block> updateNeeded = new HashSet<>();
+                Set<Block> updateNeeded = new ObjectOpenHashSet<>();
                 c.carve(chunk.getX(), chunk.getZ(), world, (v, type) -> {
                     Block b = chunk.getBlock(v.getBlockX(), v.getBlockY(), v.getBlockZ());
                     MaterialData m = handle.getType(b);

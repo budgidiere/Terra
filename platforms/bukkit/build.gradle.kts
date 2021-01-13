@@ -31,6 +31,7 @@ dependencies {
     "shadedImplementation"("org.bstats:bstats-bukkit:1.7")
 
     "compileOnly"("com.sk89q.worldedit:worldedit-bukkit:7.2.0-SNAPSHOT")
+    "compileOnly"("it.unimi.dsi:fastutil:8.4.4")
 }
 
 tasks.withType<ProcessResources> {

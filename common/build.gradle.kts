@@ -21,6 +21,8 @@ dependencies {
     "compileOnly"("com.googlecode.json-simple:json-simple:1.1")
 
     "shadedApi"("com.google.guava:guava:30.0-jre")
+    "compileOnly"("it.unimi.dsi:fastutil:8.4.4")
+    "runtimeOnly"("it.unimi.dsi:fastutil:8.4.4")
 }
 
 publishing {

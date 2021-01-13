@@ -10,17 +10,17 @@ import com.dfsek.terra.api.util.FastRandom;
 import com.dfsek.terra.api.util.GlueList;
 import com.dfsek.terra.api.util.SerializationUtil;
 import com.dfsek.terra.api.world.generation.TerraBlockPopulator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
 public class PopulationManager implements TerraBlockPopulator {
     private final List<TerraBlockPopulator> attachedPopulators = new GlueList<>();
-    private final HashSet<ChunkCoordinate> needsPop = new HashSet<>();
+    private final ObjectOpenHashSet<ChunkCoordinate> needsPop = new ObjectOpenHashSet<>();
     private final TerraPlugin main;
     private WorldProfiler profiler;
 
@@ -63,13 +63,13 @@ public class PopulationManager implements TerraBlockPopulator {
     public synchronized void saveBlocks(World w) throws IOException {
         File f = new File(Gaea.getGaeaFolder(w), "chunks.bin");
         f.createNewFile();
-        SerializationUtil.toFile((HashSet<ChunkCoordinate>) needsPop.clone(), f);
+        SerializationUtil.toFile((ObjectOpenHashSet<ChunkCoordinate>) needsPop.clone(), f);
     }
 
     @SuppressWarnings("unchecked")
     public synchronized void loadBlocks(World w) throws IOException, ClassNotFoundException {
         File f = new File(Gaea.getGaeaFolder(w), "chunks.bin");
-        needsPop.addAll((HashSet<ChunkCoordinate>) SerializationUtil.fromFile(f));
+        needsPop.addAll((ObjectOpenHashSet<ChunkCoordinate>) SerializationUtil.fromFile(f));
     }
 
 

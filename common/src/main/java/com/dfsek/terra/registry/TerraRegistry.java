@@ -3,10 +3,10 @@ package com.dfsek.terra.registry;
 import com.dfsek.tectonic.exception.LoadException;
 import com.dfsek.tectonic.loading.ConfigLoader;
 import com.dfsek.tectonic.loading.TypeLoader;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -60,7 +60,7 @@ public abstract class TerraRegistry<T> implements TypeLoader<T> {
     }
 
     public Set<T> entries() {
-        return new HashSet<>(objects.values());
+        return new ObjectOpenHashSet<>(objects.values());
     }
 
     /**

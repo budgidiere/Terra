@@ -53,4 +53,5 @@ dependencies {
     "compileOnly"("net.fabricmc:sponge-mixin:+")
     "annotationProcessor"("net.fabricmc:sponge-mixin:+")
     "annotationProcessor"("net.fabricmc:fabric-loom:+")
+    "compileOnly"("it.unimi.dsi:fastutil:8.4.4")
 }

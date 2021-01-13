@@ -5,13 +5,14 @@ import com.dfsek.terra.api.structures.tokenizer.exceptions.EOFException;
 import com.dfsek.terra.api.structures.tokenizer.exceptions.FormatException;
 import com.dfsek.terra.api.structures.tokenizer.exceptions.TokenizerException;
 import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 
 import java.io.StringReader;
 import java.util.Set;
 import java.util.Stack;
 
 public class Tokenizer {
-    public static final Set<Character> syntaxSignificant = Sets.newHashSet(';', '(', ')', '"', ',', '\\', '=', '{', '}', '+', '-', '*', '/', '>', '<', '!'); // Reserved chars
+    public static final Set<Character> syntaxSignificant = new ObjectOpenHashSet<>(Sets.newHashSet(';', '(', ')', '"', ',', '\\', '=', '{', '}', '+', '-', '*', '/', '>', '<', '!')); // Reserved chars
     private final Lookahead reader;
     private final Stack<Token> brackets = new Stack<>();
     private Token current;

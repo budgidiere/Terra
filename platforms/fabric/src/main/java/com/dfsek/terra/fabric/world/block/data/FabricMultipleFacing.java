@@ -3,10 +3,10 @@ package com.dfsek.terra.fabric.world.block.data;
 import com.dfsek.terra.api.platform.block.BlockFace;
 import com.dfsek.terra.api.platform.block.data.MultipleFacing;
 import com.dfsek.terra.fabric.world.block.FabricBlockData;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.property.Properties;
 
-import java.util.HashSet;
 import java.util.Set;
 
 public class FabricMultipleFacing extends FabricBlockData implements MultipleFacing {
@@ -16,7 +16,7 @@ public class FabricMultipleFacing extends FabricBlockData implements MultipleFac
 
     @Override
     public Set<BlockFace> getFaces() {
-        Set<BlockFace> set = new HashSet<>();
+        Set<BlockFace> set = new ObjectOpenHashSet<>();
         if(delegate.get(Properties.NORTH)) set.add(BlockFace.NORTH);
         if(delegate.get(Properties.SOUTH)) set.add(BlockFace.SOUTH);
         if(delegate.get(Properties.EAST)) set.add(BlockFace.EAST);
@@ -52,7 +52,7 @@ public class FabricMultipleFacing extends FabricBlockData implements MultipleFac
 
     @Override
     public Set<BlockFace> getAllowedFaces() {
-        Set<BlockFace> set = new HashSet<>();
+        Set<BlockFace> set = new ObjectOpenHashSet<>();
         if(delegate.contains(Properties.NORTH)) set.add(BlockFace.NORTH);
         if(delegate.contains(Properties.SOUTH)) set.add(BlockFace.SOUTH);
         if(delegate.contains(Properties.EAST)) set.add(BlockFace.EAST);
