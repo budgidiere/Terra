@@ -45,7 +45,7 @@ public class FloraRegistry extends TerraRegistry<Flora> {
         addItem("OXEYE_DAISY", () -> new ConstantFlora(grassy, Collections.singletonList(data("minecraft:oxeye_daisy"))));
         addItem("ALLIUM", () -> new ConstantFlora(grassy, Collections.singletonList(data("minecraft:allium"))));
         addItem("CORNFLOWER", () -> new ConstantFlora(grassy, Collections.singletonList(data("minecraft:cornflower"))));
-        addItem("LILY_PAD", () -> new ConstantFlora((MaterialSet) create("minecraft:water"), Collections.singletonList(data("minecraft:lily_pad"))));
+        addItem("LILY_PAD", () -> new ConstantFlora(MaterialSet.get(create("minecraft:water")), Collections.singletonList(data("minecraft:lily_pad"))));
         MaterialSet mushroom = MaterialSet.get(create("minecraft:grass_block"), create("minecraft:stone"), create("minecraft:podzol"), create("minecraft:netherrack"), create("minecraft:mycelium"));
         addItem("RED_MUSHROOM", () -> new ConstantFlora(mushroom, Collections.singletonList(data("minecraft:red_mushroom"))));
         addItem("BROWN_MUSHROOM", () -> new ConstantFlora(mushroom, Collections.singletonList(data("minecraft:brown_mushroom"))));

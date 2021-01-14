@@ -26,15 +26,15 @@ public class BukkitTree implements Tree {
         WorldHandle handle = main.getWorldHandle();
         switch(type) {
             case CRIMSON_FUNGUS:
-                return (MaterialSet) handle.createMaterialData("minecraft:crimson_nylium");
+                return MaterialSet.get(handle.createMaterialData("minecraft:crimson_nylium"));
             case WARPED_FUNGUS:
-                return (MaterialSet) handle.createMaterialData("minecraft:warped_nylium");
+                return MaterialSet.get(handle.createMaterialData("minecraft:warped_nylium"));
             case BROWN_MUSHROOM:
             case RED_MUSHROOM:
                 return MaterialSet.get(handle.createMaterialData("minecraft:mycelium"), handle.createMaterialData("minecraft:grass_block"),
                         handle.createMaterialData("minecraft:podzol"));
             case CHORUS_PLANT:
-                return (MaterialSet) handle.createMaterialData("minecraft:end_stone");
+                return MaterialSet.get(handle.createMaterialData("minecraft:end_stone"));
             default:
                 return MaterialSet.get(handle.createMaterialData("minecraft:grass_block"), handle.createMaterialData("minecraft:dirt"),
                         handle.createMaterialData("minecraft:podzol"));

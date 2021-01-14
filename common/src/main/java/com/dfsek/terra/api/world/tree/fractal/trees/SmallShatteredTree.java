@@ -20,7 +20,7 @@ public class SmallShatteredTree extends FractalTree {
 
     @Override
     public MaterialSet getSpawnable() {
-        return (MaterialSet) main.getWorldHandle().createMaterialData("minecraft:end_stone");
+        return MaterialSet.get(main.getWorldHandle().createMaterialData("minecraft:end_stone"));
     }
 
     /**
